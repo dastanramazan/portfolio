@@ -13,6 +13,9 @@ import Portfolio from './components/portfolio/Portfolio';
 import Testimonials from './components/testimonials/Testimonials';
 import Contact from './components/contact/Contact';
 import AllProjects from './components/allProjects/AllProjects';
+import Blog from './components/blog/Blog';
+import Post from './components/blog/Post';
+import BlogPreview from './components/blog/BlogPreview';
 
 const ScrollToAnchor = () => {
   const location = useLocation();
@@ -40,6 +43,7 @@ const MainContent = () => (
     <Portfolio />
     <Services />
     <Testimonials />
+    <BlogPreview />
     <Contact />
   </>
 );
@@ -63,6 +67,8 @@ const AnimatedRoutes = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><MainContent /></PageTransition>} />
         <Route path="/projects" element={<PageTransition><AllProjects /></PageTransition>} />
+        <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} />
+        <Route path="/blog/:slug" element={<PageTransition><Post /></PageTransition>} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </AnimatePresence>

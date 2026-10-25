@@ -68,3 +68,23 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Blog
+
+Articles are markdown files in `src/content/posts/`. To publish one, add a file
+such as `my-post.md` (the file name becomes the URL slug) starting with:
+
+```
+---
+title: My Post Title
+date: 2026-11-01
+summary: One sentence shown on the list page.
+tags: React, Teaching
+---
+```
+
+Set `draft: true` in the header to hide a post. Then run `npm run deploy`.
+
+Comments use [Giscus](https://giscus.app) (GitHub Discussions). Enable
+Discussions on the repo, generate the values at giscus.app, and paste
+`repoId` and `categoryId` into `src/config/giscus.js`.
