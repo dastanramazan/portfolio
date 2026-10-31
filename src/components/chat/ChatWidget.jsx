@@ -1,16 +1,27 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import './chatWidget.css';
 
 const GREETING = "👋 Hi! I'm Dastan's assistant. How can I help you today?";
 
-// Placeholder reply logic — swap this out for a real API call once the AI
-// backend is wired up. Keep the async signature so the rest of the widget
-// (typing indicator, message list) doesn't need to change when you do.
+const CV_URL = 'https://drive.google.com/file/d/1JO5ea-EMcER-OMve2-TcWePBKA38vJx4/view?usp=drive_link';
+const TEASER_KEY = 'chatTeaserSeen';
+
+// Reply logic — swap this out for a real API call once the AI backend is
+// wired up. Keep the async signature so the rest of the widget (typing
+// indicator, message list) doesn't need to change when you do. Until then it
+// is upfront that free-form questions aren't answered yet and points to the
+// quick actions instead of promising something that isn't there.
 async function getBotReply(userText) {
-  await new Promise((resolve) => setTimeout(resolve, 700 + Math.random() * 500));
-  return "Thanks for the message! Real AI answers are coming soon here — for now, the fastest way to reach Dastan directly is the Contact form below.";
+  await new Promise((resolve) => setTimeout(resolve, 500 + Math.random() * 400));
+  return "I can't answer free-form questions just yet. Pick one of the options above, or send Dastan a message from the Contact section and he'll reply personally.";
 }
+
+const safeStorage = {
+  get: (k) => { try { return window.sessionStorage.getItem(k); } catch (e) { return null; } },
+  set: (k, v) => { try { window.sessionStorage.setItem(k, v); } catch (e) { /* storage unavailable */ } },
+};
 
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,15 +30,18 @@ const ChatWidget = () => {
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const bodyRef = useRef(null);
+  const navigate = useNavigate();
 
   // Proactively invite engagement a few seconds after the page loads,
   // instead of only waiting for the visitor to notice the button.
   useEffect(() => {
+    if (safeStorage.get(TEASER_KEY)) return undefined; // only invite once per visit
     const timer = setTimeout(() => {
       setIsOpen((open) => {
         if (!open) setShowTeaser(true);
         return open;
       });
+      safeStorage.set(TEASER_KEY, '1');
     }, 3000);
     return () => clearTimeout(timer);
   }, []);
@@ -41,6 +55,11 @@ const ChatWidget = () => {
   const openChat = () => {
     setIsOpen(true);
     setShowTeaser(false);
+  };
+
+  const goTo = (hash) => {
+    setIsOpen(false);
+    navigate(hash);
   };
 
   const handleSend = async (e) => {
@@ -98,7 +117,7 @@ const ChatWidget = () => {
               <div>
                 <p className="chat-widget__header-title">Dastan's Assistant</p>
                 <p className="chat-widget__header-status">
-                  <span className="chat-widget__status-dot" /> Usually replies right away
+                  <span className="chat-widget__status-dot" /> Quick links and ways to reach Dastan
                 </p>
               </div>
               <button
@@ -117,6 +136,11 @@ const ChatWidget = () => {
                   {m.text}
                 </div>
               ))}
+              <div className="chat-widget__actions">
+                <button type="button" onClick={() => goTo('/#portfolio')}>See projects</button>
+                <a href={CV_URL} target="_blank" rel="noopener noreferrer">Download CV</a>
+                <button type="button" onClick={() => goTo('/#contact')}>Write to Dastan</button>
+              </div>
               {isTyping && (
                 <div className="chat-widget__bubble chat-widget__bubble--bot chat-widget__bubble--typing">
                   <span />

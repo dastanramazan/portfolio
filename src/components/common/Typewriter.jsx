@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import useReducedMotion from './useReducedMotion';
 
 // Cycles through `words`, typing each one out then deleting it before moving to the next.
 const Typewriter = ({
@@ -11,8 +12,10 @@ const Typewriter = ({
   const [wordIndex, setWordIndex] = useState(0);
   const [text, setText] = useState('');
   const [deleting, setDeleting] = useState(false);
+  const reduced = useReducedMotion();
 
   useEffect(() => {
+    if (reduced) return undefined; // static first word instead of the typing loop
     const currentWord = words[wordIndex % words.length];
 
     if (!deleting && text === currentWord) {
@@ -33,12 +36,12 @@ const Typewriter = ({
     }, deleting ? deletingSpeed : typingSpeed);
 
     return () => clearTimeout(timeout);
-  }, [text, deleting, wordIndex, words, typingSpeed, deletingSpeed, pauseTime]);
+  }, [text, deleting, wordIndex, words, typingSpeed, deletingSpeed, pauseTime, reduced]);
 
   return (
     <span className={className}>
-      {text}
-      <span aria-hidden="true" className="typewriter__cursor">|</span>
+      {reduced ? words[0] : text}
+      {!reduced && <span aria-hidden="true" className="typewriter__cursor">|</span>}
     </span>
   );
 };

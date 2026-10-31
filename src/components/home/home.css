@@ -104,6 +104,25 @@
     50% { opacity: 0; }
 }
 
+/* Primary + secondary calls to action under the intro */
+.home__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.btn--ghost {
+    background-color: transparent;
+    border-color: rgba(255, 255, 255, 0.55);
+    color: #fff;
+    transition: background-color .25s, border-color .25s;
+}
+
+.btn--ghost:hover {
+    background-color: rgba(255, 255, 255, 0.14);
+    border-color: #fff;
+}
+
 /* Social icons */
 .home__socials {
     display: flex;
@@ -143,6 +162,10 @@
     }
 
     .home__socials {
+        justify-content: center;
+    }
+
+    .home__cta {
         justify-content: center;
     }
 }

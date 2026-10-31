@@ -72,6 +72,7 @@ const Sidebar = () => {
                                         to={to}
                                         className={currentId === id ? "nav__link active-link" : "nav__link"}
                                         aria-label={label}
+                                        data-label={label}
                                         onClick={() => showMenu(false)}
                                     >
                                         {currentId === id && (

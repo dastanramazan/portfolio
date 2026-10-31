@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import useReducedMotion from '../common/useReducedMotion';
 import './heroTerminal.css';
 
 // Tokens for the typed snippet, each with an optional syntax-highlight class.
@@ -37,34 +38,27 @@ const groupChars = (slice) => {
 };
 
 const HeroTerminal = () => {
+  const reduced = useReducedMotion();
   const [count, setCount] = useState(0);
-  const dirRef = useRef(1);
 
+  // Types the snippet out once and then leaves it on screen. (It used to
+  // delete and retype forever, which competed with the role typewriter next
+  // to it and never let the finished code be read.)
   useEffect(() => {
-    let pause = 0;
+    if (reduced) return undefined;
     const id = setInterval(() => {
-      if (pause > 0) {
-        pause -= 1;
-        return;
-      }
       setCount((prev) => {
-        let next = prev + dirRef.current * 2;
-        if (next >= CHARS.length) {
-          next = CHARS.length;
-          dirRef.current = -1;
-          pause = 45;
-        } else if (next <= 0) {
-          next = 0;
-          dirRef.current = 1;
-          pause = 16;
+        if (prev >= CHARS.length) {
+          clearInterval(id);
+          return CHARS.length;
         }
-        return next;
+        return prev + 2;
       });
     }, 32);
     return () => clearInterval(id);
-  }, []);
+  }, [reduced]);
 
-  const groups = groupChars(CHARS.slice(0, count));
+  const groups = groupChars(CHARS.slice(0, reduced ? CHARS.length : count));
 
   return (
     <div className="hero-terminal">

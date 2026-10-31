@@ -63,6 +63,39 @@
     color: #fff;
 }
 
+/* Icon-only nav is hard to decode, so show the section name next to the
+   icon on hover and keyboard focus. */
+.nav__link::after {
+    content: attr(data-label);
+    position: absolute;
+    left: calc(100% + 0.6rem);
+    top: 50%;
+    transform: translate(-6px, -50%);
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    background-color: var(--title-color);
+    color: var(--container-color);
+    font-size: var(--small-font-size);
+    font-weight: var(--font-medium);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s, transform .2s;
+    z-index: 5;
+}
+
+.nav__link:hover::after,
+.nav__link:focus-visible::after {
+    opacity: 1;
+    transform: translate(0, -50%);
+}
+
+.nav__link:focus-visible {
+    outline: 2px solid var(--first-color);
+    outline-offset: 2px;
+    border-radius: 50%;
+}
+
 .nav__indicator {
     position: absolute;
     inset: 0;

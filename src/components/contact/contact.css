@@ -25,6 +25,69 @@
     color: #fff; /* White text color */
 }
 
+.contact__lead {
+    color: #cfd8dc;
+    margin-bottom: 1.25rem;
+    max-width: 32ch;
+}
+
+.contact__status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fff;
+    font-weight: var(--font-semibold);
+}
+
+.contact__status-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: #4ade80;
+    box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.25);
+}
+
+.contact__reply {
+    color: #b0bec5;
+    font-size: var(--small-font-size);
+    margin-bottom: 1.25rem;
+}
+
+.contact__links {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.contact__links a {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.contact__links a:hover {
+    color: var(--first-color);
+}
+
+/* Off-screen spam trap field (kept out of the layout and the tab order). */
+.contact__trap {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.contact__error {
+    margin-top: 0.75rem;
+    color: #ffb4b4;
+    font-size: var(--small-font-size);
+}
+
+.btn:disabled {
+    opacity: 0.7;
+    cursor: progress;
+}
+
 .contact__form-group {
     display: grid;
     grid-template-columns: repeat(2, 1fr);column-gap: 1.5rem;

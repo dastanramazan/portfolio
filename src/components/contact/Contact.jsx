@@ -6,21 +6,26 @@ import './contact.css';
 const Contact = () => {
   const form = useRef();
   const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState('idle'); // idle | sending | error
 
   const sendEmail = (e) => {
     e.preventDefault();
 
+    // Spam trap: real visitors never see or fill this field, bots usually do.
+    if (form.current.elements.website.value) return;
+
+    setStatus('sending');
     emailjs.sendForm(
       'service_a9lpv3h',
       'template_gg53xdk',
       form.current,
       '_rog0EzLsh6n5TU3Q'
     ).then(() => {
+      setStatus('idle');
       setSent(true);
       form.current.reset();
-
-      // Optional: Auto hide after 5s
-      // setTimeout(() => setSent(false), 10000);
+    }).catch(() => {
+      setStatus('error');
     });
   };
 
@@ -31,6 +36,19 @@ const Contact = () => {
       <div className="contact__container grid">
         <div className="contact__info">
           <h3 className="contact__title">Let's talk about your project!</h3>
+          <p className="contact__lead">
+            Have a site to build, fix or speed up? Tell me what you need and I'll get back to you.
+          </p>
+          <p className="contact__status">
+            <span className="contact__status-dot" aria-hidden="true" />
+            Available for new projects
+          </p>
+          <p className="contact__reply">Usually replies within one business day.</p>
+          <ul className="contact__links">
+            <li><a href="https://github.com/dastanramazan" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/dramazan/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://x.com/DastanRamazan" target="_blank" rel="noopener noreferrer">X</a></li>
+          </ul>
         </div>
 
         <div className="form-wrapper">
@@ -56,7 +74,22 @@ const Contact = () => {
                 required
               ></textarea>
             </div>
-            <button type="submit" className="btn">Send Message</button>
+            <input
+              type="text"
+              name="website"
+              className="contact__trap"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+            />
+            <button type="submit" className="btn" disabled={status === 'sending'}>
+              {status === 'sending' ? 'Sending…' : 'Send Message'}
+            </button>
+            {status === 'error' && (
+              <p className="contact__error" role="alert">
+                Sorry, the message didn't go through. Please try again in a moment.
+              </p>
+            )}
           </form>
 
           {/* Animated Overlay with Dismiss Button */}

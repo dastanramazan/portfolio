@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import "./home.css";
 import HeaderSocials from './HeaderSocials';
 import HeroTerminal from './HeroTerminal';
@@ -28,7 +29,18 @@ const Home = () => {
         </Reveal>
 
         <Reveal delay={0.4}>
-          <a href="#contact" className="btn">Contact Me</a>
+          <div className="home__cta">
+            <Link to="/#contact" className="btn">Contact Me</Link>
+            <Link to="/#portfolio" className="btn btn--ghost">View Projects</Link>
+            <a
+              href="https://drive.google.com/file/d/1JO5ea-EMcER-OMve2-TcWePBKA38vJx4/view?usp=drive_link"
+              className="btn btn--ghost"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Download CV
+            </a>
+          </div>
         </Reveal>
 
       </div>

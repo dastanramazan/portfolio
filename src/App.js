@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, MotionConfig, motion } from 'framer-motion';
 import Sidebar from './components/sidebar/Sidebar';
 import ThemeToggle from './components/common/ThemeToggle';
 import ChatWidget from './components/chat/ChatWidget';
@@ -77,14 +77,14 @@ const AnimatedRoutes = () => {
 
 const App = () => {
   return (
-    <>
+    <MotionConfig reducedMotion="user">
       <Sidebar />
       <ThemeToggle />
       <main className='main'>
         <AnimatedRoutes />
       </main>
       <ChatWidget />
-    </>
+    </MotionConfig>
   );
 }
 

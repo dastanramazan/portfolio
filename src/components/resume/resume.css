@@ -13,6 +13,14 @@
     box-shadow: var(--shadow);
 }
 
+.timeline__heading {
+    font-size: var(--small-font-size);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--first-color);
+    margin-bottom: 1.25rem;
+}
+
 /* distance between sentences*/
 .timeline__item {
     position: relative;

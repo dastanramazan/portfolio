@@ -13,6 +13,7 @@ const Resume = () => {
       <div className="resume__container grid">
 {/* Education */}
         <StaggerGroup className="timeline grid">
+            <h3 className="timeline__heading">Education</h3>
             {Data.map((val, id) => {
               if(val.category === "education") {
                 return(
@@ -30,6 +31,7 @@ const Resume = () => {
         </StaggerGroup>
 {/* Experience */}
         <StaggerGroup className="timeline grid">
+            <h3 className="timeline__heading">Work experience</h3>
             {Data.map((val, index) => {
               if(val.category === "experience") {
                 return(
