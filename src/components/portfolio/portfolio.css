@@ -96,8 +96,8 @@
     width: 100%;
     max-width: 420px;
     height: 260px;
-    object-fit: fill;
-    object-position: center;
+    object-fit: cover; /* was fill, which stretched every screenshot to one box */
+    object-position: top center; /* site screenshots: keep the header, crop the bottom */
     transition: .3s;
     border-radius: var(--border-radius);
     display: block;

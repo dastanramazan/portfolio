@@ -2,7 +2,7 @@ import React from 'react';
 import "./testimonials.css";
 import Image1 from "../../assets/avatar-1.svg";
 import Image3 from "../../assets/avatar-3.svg";
-import Image2 from "../../assets/ergo_logo.png";
+import Image2 from "../../assets/ergo_logo.webp";
 
 // import Swiper core and required modules from https://swiperjs.com/react
 import { Pagination } from 'swiper';

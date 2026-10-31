@@ -1,12 +1,12 @@
-import Work1 from "../../assets/activebox.png";
-import Work3 from "../../assets/micro365.png"
-import Work4 from "../../assets/amanat.png";
-import Work5 from "../../assets/ergonomic.png";
-import Work6 from "../../assets/scality.png";
-import Work7 from "../../assets/huawei.png";
-import Work8 from "../../assets/cisco.png";
-import Work9 from "../../assets/record.png";
-import Work10 from "../../assets/carparts.png";
+import Work1 from "../../assets/activebox.webp";
+import Work3 from "../../assets/micro365.webp"
+import Work4 from "../../assets/amanat.webp";
+import Work5 from "../../assets/ergonomic.webp";
+import Work6 from "../../assets/scality.webp";
+import Work7 from "../../assets/huawei.webp";
+import Work8 from "../../assets/cisco.webp";
+import Work9 from "../../assets/record.webp";
+import Work10 from "../../assets/carparts.webp";
 
 
 const Menu = [

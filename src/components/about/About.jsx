@@ -1,6 +1,6 @@
 import React from 'react';
 import "./about.css";
-import Image from "../../assets/myavatar_1.jpg";
+import Image from "../../assets/myavatar_1.webp";
 import AboutBox from './AboutBox';
 import Reveal from '../common/Reveal';
 
@@ -10,7 +10,7 @@ const About = () => {
       <Reveal as="h2" className="section__title">About ME</Reveal>
 
       <div className="about__container grid">
-        <Reveal as="img" src={Image} alt="" className="about__img" y={0} delay={0.1} />
+        <Reveal as="img" src={Image} alt="Dastan Ramazan" loading="lazy" decoding="async" className="about__img" y={0} delay={0.1} />
 {/* About */}
         <div className="about__data grid">
               <Reveal className="about__info" delay={0.2}>

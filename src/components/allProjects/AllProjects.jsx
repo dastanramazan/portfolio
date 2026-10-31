@@ -52,7 +52,7 @@ const AllProjects = () => {
           {items.map(({ id, image, title, category, link }) => (
             <div className="work__card" key={id}>
               <div className="work__thumbnail">
-                <img src={image} alt={title} className="work__img" />
+                <img src={image} alt={`${title} website`} className="work__img" loading="lazy" decoding="async" />
                 <div className="work__mask"></div>
               </div>
               <span className="work__category">{Array.isArray(category) ? category.join(", ") : category}</span>
