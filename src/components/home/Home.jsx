@@ -19,10 +19,10 @@ const Home = () => {
         <Reveal delay={0.2}>
           <Typewriter
             className="home__role"
-            words={["Software Engineer", "Web Developer", "UI/UX Enthusiast"]}
+            words={["Computer Science Teacher", "Software Engineer", "Open-source Builder"]}
           />
         </Reveal>
-        <Reveal as="span" className="home__education" delay={0.25}>I'm creative Software Engineer based in the Woodlands, passionate about building scalable web applications.</Reveal>
+        <Reveal as="span" className="home__education" delay={0.25}>Computer science teacher and software engineer in the Houston area. I build free, open-source AI feedback tools for K–12 classrooms.</Reveal>
 
         <Reveal delay={0.35}>
           <HeaderSocials />
@@ -30,7 +30,14 @@ const Home = () => {
 
         <Reveal delay={0.4}>
           <div className="home__cta">
-            <Link to="/#contact" className="btn">Contact Me</Link>
+            <a
+              href="https://dastanramazan.github.io/STEM-Bridge-AI/"
+              className="btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              See STEM-Bridge-AI
+            </a>
             <Link to="/#portfolio" className="btn btn--ghost">View Projects</Link>
             <a
               href="https://drive.google.com/file/d/1JO5ea-EMcER-OMve2-TcWePBKA38vJx4/view?usp=drive_link"

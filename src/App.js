@@ -8,9 +8,7 @@ import ChatWidget from './components/chat/ChatWidget';
 import Home from './components/home/Home';
 import About from './components/about/About';
 import Resume from './components/resume/Resume';
-import Services from './components/services/Services';
 import Portfolio from './components/portfolio/Portfolio';
-import Testimonials from './components/testimonials/Testimonials';
 import Contact from './components/contact/Contact';
 import AllProjects from './components/allProjects/AllProjects';
 import Blog from './components/blog/Blog';
@@ -34,6 +32,8 @@ const ScrollToAnchor = () => {
   return null;
 };
 
+// Services and Reviews are intentionally off the page for the current profile
+// (components are still in src/ and in git tag v1-web-dev-portfolio).
 const MainContent = () => (
   <>
     <ScrollToAnchor />
@@ -41,8 +41,6 @@ const MainContent = () => (
     <About />
     <Resume />
     <Portfolio />
-    <Services />
-    <Testimonials />
     <BlogPreview />
     <Contact />
   </>

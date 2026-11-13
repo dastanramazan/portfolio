@@ -1,7 +1,6 @@
 import React from 'react';
 import "./about.css";
 import Image from "../../assets/myavatar_1.webp";
-import AboutBox from './AboutBox';
 import Reveal from '../common/Reveal';
 
 const About = () => {
@@ -14,7 +13,8 @@ const About = () => {
 {/* About */}
         <div className="about__data grid">
               <Reveal className="about__info" delay={0.2}>
-                <p className="about__description">Hello, I'm Dastan, a Software Engineer excited about using technology to make the world better. Over 12 years, I've learned about lots of different technologies, from making websites to working with complex systems. I'm good at finding efficient ways to do things, staying organized, and paying attention to technical details. I enjoy working with teams to create new things that help push technology forward.</p>
+                <p className="about__description">I teach computer science at a Title I public charter school in Spring, Texas, and I build software. My main project is STEM-Bridge-AI, a free, open-source set of AI tools designed to give students feedback on their science writing and code without doing the work for them.</p>
+                <p className="about__description">I hold an M.S. in Computer Science from North American University (2024). Before teaching, I supervised programming tracks at QWANT, a coding school in Kazakhstan, and taught an introductory computing course at KAZGUU University. Earlier I worked in public policy.</p>
                 <a href="https://drive.google.com/file/d/1JO5ea-EMcER-OMve2-TcWePBKA38vJx4/view?usp=drive_link" className="btn">Download CV</a>
               </Reveal>
 
@@ -22,7 +22,6 @@ const About = () => {
         </div>
       </div>
 
-      <AboutBox />
     </section>
   )
 }

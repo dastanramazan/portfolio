@@ -35,19 +35,13 @@ const Contact = () => {
 
       <div className="contact__container grid">
         <div className="contact__info">
-          <h3 className="contact__title">Let's talk about your project!</h3>
+          <h3 className="contact__title">Get in touch</h3>
           <p className="contact__lead">
-            Have a site to build, fix or speed up? Tell me what you need and I'll get back to you.
+            I’m glad to hear from teachers and schools who want to try STEM-Bridge-AI, and from anyone who wants to contribute to it.
           </p>
-          <p className="contact__status">
-            <span className="contact__status-dot" aria-hidden="true" />
-            Available for new projects
-          </p>
-          <p className="contact__reply">Usually replies within one business day.</p>
           <ul className="contact__links">
             <li><a href="https://github.com/dastanramazan" target="_blank" rel="noopener noreferrer">GitHub</a></li>
             <li><a href="https://www.linkedin.com/in/dramazan/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-            <li><a href="https://x.com/DastanRamazan" target="_blank" rel="noopener noreferrer">X</a></li>
           </ul>
         </div>
 

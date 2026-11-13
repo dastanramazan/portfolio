@@ -9,7 +9,6 @@ const NAV_ITEMS = [
     { id: "about", to: "/#about", icon: "icon-user-follow", label: "About" },
     { id: "resume", to: "/#resume", icon: "icon-graduation", label: "Resume" },
     { id: "portfolio", to: "/#portfolio", icon: "icon-briefcase", label: "Portfolio" },
-    { id: "services", to: "/#services", icon: "icon-layers", label: "Services" },
     { id: "blog", to: "/blog", icon: "icon-note", label: "Blog" },
     { id: "contact", to: "/#contact", icon: "icon-bubble", label: "Contact" },
 ];
